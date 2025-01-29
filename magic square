@@ -1,0 +1,56 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n,i,j,p,q;
+    cin>>n;
+    int array[n][n];
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+            array[i][j]=0;
+        }
+    }
+
+     i=0;j=n/2;
+    int k=0;
+    for(k=1;k<=n*n;k++)
+    {
+        if(j<0)
+        {
+            j=j+n;
+        }
+     if(i<0)
+        {
+            i=i+n;
+        }
+    
+    if(array[i][j]==0)
+    {
+     array[i][j]=k;
+     p=i+1;
+     q=j;
+     i=i-1;
+     j=j-1;
+    }
+    else
+    {
+        i=p;
+        j=q;
+        k=k-1;
+    
+    }
+
+    }
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+            cout<<array[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+
+
+}
