@@ -1,0 +1,230 @@
+#include <iostream>
+#include<algorithm>
+#include <stack>
+#include<string>
+#include <cctype> // For isalnum() function
+
+using namespace std;
+int precidense(char op)
+{
+    if(op=='+'||op=='-')
+    {
+        return 1;
+    }
+    if(op=='*'||op=='/')
+    {
+        return 2;
+    }
+    if(op=='^')
+    {
+        return 3;
+    }
+    return 0;
+}
+string infixtopostfix(string infix)
+{
+    stack <char> st;
+    string postfix="";
+    for(char ch:infix)
+    {
+        if(isalnum(ch))
+        {
+            postfix+=ch;
+        }
+        else if(ch=='(')
+        {
+            st.push(ch);
+        }
+        else if(ch==')')
+        {
+            while(st.top()!='('&&!st.empty())
+            {
+                postfix+=st.top();
+                st.pop();
+            }
+            st.pop();
+        }
+        else{
+            while(!st.empty()&&precidense(st.top())>=precidense(ch))
+            {
+                postfix+=st.top();
+                st.pop();
+            }
+            st.push(ch);
+        }
+    }
+    while(!st.empty())
+    {
+        postfix+=st.top();
+        st.pop();
+    }
+    return postfix;
+}
+int evaluating(string postfix)
+{
+    stack<int> st;
+    for(char ch :postfix)
+    {
+if(isalnum(ch))
+{
+    st.push(ch-'0');
+}
+else
+{
+    if(ch=='+')
+    {
+        
+        int z=st.top();
+        st.pop();
+        z+=st.top();
+        st.pop();
+        st.push(z);
+        cout<<z<<endl;
+        
+    }
+    else if(ch=='-')
+    {
+        int z=st.top();
+        st.pop();
+        z=st.top()-z;
+        st.pop();
+        st.push(z);
+        cout<<z<<endl;
+    }
+    else if(ch=='*')
+    {
+        int z=st.top();
+        st.pop();
+        z*=st.top();
+        st.pop();
+        st.push(z);
+        cout<<z<<endl;
+    }
+    else if(ch=='/')
+    {
+        int z=st.top();
+        st.pop();
+        z=st.top()/z;
+        st.pop();
+        st.push(z);
+        cout<<z<<endl;
+    }
+    
+}
+    }
+    return st.top();
+}
+string prefixcon(string infix)
+{
+    stack <char> st;
+    string postfix="";
+    for(char ch:infix)
+    {
+        if(isalnum(ch))
+        {
+            postfix+=ch;
+        }
+        else if(ch==')')
+        {
+            st.push(ch);
+        }
+        else if(ch=='(')
+        {
+            while(st.top()!=')'&&!st.empty())
+            {
+                postfix+=st.top();
+                st.pop();
+            }
+            st.pop();
+        }
+        else{
+            while(!st.empty()&&precidense(st.top())>precidense(ch))
+            {
+                postfix+=st.top();
+                st.pop();
+            }
+            st.push(ch);
+        }
+    }
+    while(!st.empty())
+    {
+        postfix+=st.top();
+        st.pop();
+    }
+    return postfix;
+}
+int evaluateprefix(string postfix)
+{
+    stack<int> st;
+    reverse(postfix.begin(),postfix.end());
+    for(char ch :postfix)
+    {
+if(isalnum(ch))
+{
+    st.push(ch-'0');
+}
+else
+{
+    if(ch=='+')
+    {
+        
+        int z=st.top();
+        st.pop();
+        z+=st.top();
+        st.pop();
+        st.push(z);
+        cout<<z<<endl;
+        
+    }
+    else if(ch=='-')
+    {
+        int z=st.top();
+        st.pop();
+        z=z-st.top();
+        st.pop();
+        st.push(z);
+        cout<<z<<endl;
+    }
+    else if(ch=='*')
+    {
+        int z=st.top();
+        st.pop();
+        z*=st.top();
+        st.pop();
+        st.push(z);
+        cout<<z<<endl;
+    }
+    else if(ch=='/')
+    {
+        int z=st.top();
+        st.pop();
+        z=st.top()/z;
+        st.pop();
+        st.push(z);
+        cout<<z<<endl;
+    }
+    
+}
+    }
+    return st.top();
+}
+int main()
+{
+    string infix;
+    cin>>infix;
+    cout<<infixtopostfix(infix);
+
+
+    // string postfix="623+-382/+*";
+    // cout<<postfix;
+    // cout<<endl;
+    // cout<<evaluating(postfix);
+    // reverse(infix.begin(),infix.end());
+    // cout<<"1"<<endl;
+    // string prefix=prefixcon(infix);
+    // cout<<"2"<<endl;
+    // reverse(prefix.begin(),prefix.end());
+    // cout<<prefix<<endl;
+    // cout<<evaluateprefix(prefix);
+
+}
