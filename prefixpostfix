@@ -1,0 +1,47 @@
+#include<iostream>
+#include<vector>
+#include<stack>
+using namespace std;
+
+// vector<char> v;
+// int top=0;
+// int empty()
+// {
+//     return v.size()==0;
+// }
+// void push(char x,int top)
+// {
+
+// }
+int main()
+{
+    int top, i,j=0;
+    stack<char> stak;
+    vector<int> array;
+    string s,postfix[10];
+    cout<<"Enter the string: ";
+    cin>>s;
+    for(i=0;s[i]!='\0';i++)
+    {
+        if(s[i]=='('||s[i]=='-'||s[i]=='+'||s[i]=='*'||s[i]=='/')
+        {
+            stak.push(s[i]);
+        }
+        else if(s[i]==')')
+        {
+            while(stak.top()!='(')
+            {
+                postfix[j]=stak.pop();
+                j++;
+            }
+            stak.pop();
+        }
+        else{
+            postfix[j]=s[i];
+            j++;
+        }
+    } 
+    cout<<postfix<<endl;
+
+
+}
