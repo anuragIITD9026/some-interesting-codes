@@ -102,6 +102,83 @@ void preorder(node* root)
     
     preorder(root->right);
 }
+int mininorder(node* root)
+{
+    if(!root->left)
+    {
+        return root->data;
+    }
+    else{
+        return mininorder(root->left);
+    }
+}
+node* deletenode(node* root,int key)
+{
+    if(!root)
+    {
+        return nullptr;
+    }
+    if(root->data==key)
+    {
+    if(!root->left&&!root->right)
+    {
+        return nullptr;
+    }
+    else if(!root->left)
+    {
+        return root->right;
+    }
+    else if(!root->right)
+    {
+        return root->left;
+    }
+    else
+    {
+        root->data=mininorder(root->right);
+        deletenode(root->right,root->data);
+    }
+}
+else if(root->data<key)
+{
+    root->right=deletenode(root->right,key);
+}
+else{
+    root->left=deletenode(root->left,key);
+}
+int data=key;
+root->height=1+max(getheight(root->left),getheight(root->right));
+    int balance=getbalance(root);
+    //left left case
+    if(balance>1&&root->left->data>data)
+    {
+        return rightrotation(root);
+    }
+    // left right case
+    else if(balance>1&&root->left->data<data)
+    {
+        root->left=leftrotation(root->left);
+        return rightrotation(root);
+    }
+    
+    
+    // right right case
+    else if(balance<-1&&root->right->data<data)
+    {
+        return leftrotation(root);
+    }
+    // right left case
+    else if(balance<-1&&root->right->data>data)
+    {
+        root->right=rightrotation(root->right);
+        return leftrotation(root);
+
+    }
+    else{
+        return root;
+    }
+
+
+}
 int main()
 {
 node *root=nullptr;
@@ -114,6 +191,9 @@ root=insert(root,70);
 root=insert(root,5);
 root=insert(root,100);
 root=insert(root,95);
+preorder(root);
+cout<<endl;
+root=deletenode(root,100);
 preorder(root);
 // root=insert(root,10);
 // root=insert(root,10);
