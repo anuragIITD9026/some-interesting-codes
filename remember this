@@ -1,0 +1,100 @@
+#include <iostream>
+#include<string>
+using namespace std;
+
+int main()
+{
+    // cout << "hello world"<<endl;
+    // cout<<"hello again";
+    // short s=9;
+    // int b;
+    // long c;
+    // long long d;
+    // float const e=8;
+    // // e=9;
+    // double f;
+    // long double g=9.678;
+    // cout <<"the score is "<<g;
+    // cout<<"this a number : "<<s;
+    // int a=8,b=9;
+    // // cout<<"enter first number: "<<endl;
+    // // cin>>a;
+    // // cout<<"enter second number: "<<endl;
+    // // cin>>b;
+    // // cout<<a;
+    // // cout<<" "<<b;
+    // // cout<<"a+b is "<<a+b<<endl;
+    // cout<<"the a/b is "<<(float)a/b<<endl;
+    // int age;
+    // cout << "enter your age" << endl;
+    // cin >> age;
+    // //
+    // switch (age)
+    // {
+    // case 18:
+    //     cout << "you are 18 year old" << endl;
+    //     break;
+    // case 12:
+    //     cout << "you are 12 year old" << endl;
+    //     break;
+    // case 54:
+    //     cout << "you are 54 year old" << endl;
+    //     break;
+    // default:
+    //     cout << "you are unknown" << endl;
+    //     break;
+    // }
+    // int are[5],i;
+    // for(i=0;i<5;i++)
+    // {
+    //     cout<<"enter the "<<i<<"th number"<<endl;
+    //     cin>>are[i];
+    // }
+    // for(i=0;i<5;i++)
+    // {
+    //     cout<<are[i]<<endl;
+    // }
+    // string name="anurag";
+    // cout<<"name is "<<name<<endl;
+    // cout<<"name length is "<<name.length()<<endl;
+    // cout<<"name substring is "<<name.substr(0,3)<<endl;
+    // int a=56;
+    // int* ptr;
+    // ptr=&a;
+    // cout<<*ptr;
+    class employee{
+        public:
+        string name;
+        int salary;
+        employee(string name,int salary,int secretpass)
+        {
+            this->name=name;
+            this->salary=salary;
+            this->secretpass=secretpass;
+        }
+        void printdetails()
+        {
+            cout<<"employee name is"<<this->name<<"and salary is "<<this->salary<<endl;
+        }
+        void get()
+    {
+        cout<<"secret password is : "<<this->secretpass;
+    }
+        private:
+        int secretpass;
+        
+    };
+    
+    employee an("anurag",1234,2314);
+    // an.name="anurag";
+    // an.salary=7;
+    // cout<<an.name<<endl;
+    // cout<<an.salary<<endl;
+    an.printdetails();
+    an.get();
+    
+    // cout<<an.secretpass;
+
+    return 0;
+
+}
