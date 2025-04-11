@@ -1,0 +1,85 @@
+# f=open("bro.txt","w")
+# f.write("welcome to the duniya but with swagat")
+# f.close()
+# f=open("bro.txt","r")
+# text=f.read()
+# f.close()
+# print(text)
+# with open("bro.txt","a") as file:
+#     file.write("hello this is my first file handling ")
+# with open("bro.txt","r") as file:
+#     text=file.read()
+# print(text)
+# with open("bro.txt","r") as f:
+#      while True:
+        
+
+#         line=f.readline()
+#         if not line:
+#             break
+#         m1=line.split(",")[0]
+#         m2=line.split(",")[1]
+#         m3=line.split(",")[2]
+#         # if not line:
+#         #     break
+#         print(m1,",",m2,",",m3,"")
+# with open("bro2.txt","w") as f:
+#     lines=["line1\n","line2\n","line3"]
+#     f.writelines(lines)
+# with open("bro.txt","r") as f:
+#     print(type(f))
+#     f.seek(10)
+#     print(f.tell())
+#     data=f.read(5)
+#     print(data)
+# # with open("bro.txt","w") as f:
+# #     f.write("hello he i am notch o sorry i am not .in reality i am sheldon actually i dont know who is sheldon but his full name was kooper")
+#     f.truncate(20)
+# def fun(double1,value):
+#     return 6+double1(value)
+# # double = lambda x,y,z:(x+y)/2+z
+# double=lambda x:x*2
+# # print(double(5,4,0.5))
+# print(fun(double,5))
+#map
+# def cube(x):
+#     return x*x*x
+# l=[2,3,4,5,6]
+# newl=list(map(lambda x:x*x,l))
+# print(newl)
+# #filter
+# def filt_fun(x):
+#     return x>=4
+# newnewl=filter(lambda x:x>=4,l)
+# # print(list(newnewl))
+# from functools import reduce
+# l=[1,2,3,4,5,6]
+# def mysum(x,y):
+#     return x+y
+# sum=reduce(lambda x,y:x+y,l)
+# print(sum)
+# x=(1,2,4)
+# # if x==4:
+# #     y=7
+# # else:
+# #     y=6
+# # print(y)
+# z=(1,2,4)
+# x=None
+# z=None
+# print(z is x)
+# print(x==z)
+class person:
+    name="grim"
+    occupation="unemployed"
+    networth=17
+    def info(self):
+        print(f"{self.name} is {self.occupation}")
+
+a=person()
+b=person()
+a.name="lord"
+b.name="satvik"
+b.occupation="bhikhari"
+print(a.name,b.name)
+b.info()
