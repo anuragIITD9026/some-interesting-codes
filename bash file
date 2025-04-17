@@ -1,0 +1,13 @@
+#!/bin/bash
+echo "hello"
+echo "enter a number"
+read num
+echo "enter second number"
+read num1
+c=$((num+num1))
+echo "sum of both number is $c"
+if ["$num" -gt "10"]; then
+	echo "although first number is greater than 10 yet i calculated this so it is a favour from me"
+else
+	echo "thik thak"
+fi
